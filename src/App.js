@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="container">
             {
                 routes.map((route, i) => (
                     <Route path={route.path} exact={route.exact} key={i} component={route.component}/>

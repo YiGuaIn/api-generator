@@ -1,5 +1,6 @@
 import ApiView from '../login/index';
-import ApiDoc from '../api/fengxiang';
+import ApiDoc from '../api';
+import ApiMain from '../api/detail';
 const config = [
     {
         path: '/',
@@ -9,6 +10,10 @@ const config = [
         path: '/api',
         exact: false,
         component: ApiDoc
+    }, {
+        path: '/main',
+        exact: false,
+        component: ApiMain
     }
 ];
 
