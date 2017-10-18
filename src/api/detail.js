@@ -35,6 +35,10 @@ class ApiDetail extends Component {
                 }]
             }
         }
+        this.goMain = this.goMain.bind(this);
+    }
+    goMain(){
+        this.props.history.push('/api');
     }
     componentWillMount(){
 
@@ -45,6 +49,7 @@ class ApiDetail extends Component {
                 <div className="api-body">
                     <header className="api-header">
                         <h3>风向接口api-v1</h3>
+                        <span onClick={this.goMain}>首页</span>
                     </header>
                     <div className="api-content">
                         <nav className="sidebar">
@@ -99,6 +104,31 @@ class ApiDetail extends Component {
                                 </div>
                                 <div className="api-item">
                                     <span className="sub-title">响应参数</span>
+                                    <table border="1">
+                                        <thead>
+                                            <tr>
+                                                <th>字段</th>
+                                                <th>描述</th>
+                                                <th>数据类型</th>
+                                                <th>备注</th>
+                                            </tr>     
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                this.state.apiData.requestParam.map((item) => {
+                                                    return <tr key={item.field}>
+                                                        <td>{item.field}</td>
+                                                        <td>{item.desc}</td>
+                                                        <td>{item.type}</td>
+                                                        <td>{item.remark}</td>
+                                                    </tr>;
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className="api-item">
+                                    <span className="sub-title">调试接口</span>
                                 </div>
                             </div>
                         </section>

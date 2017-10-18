@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {Link} from 'react-router-dom';
 class FengXiang extends Component {
     constructor(props){
         super(props);
@@ -13,9 +13,10 @@ class FengXiang extends Component {
     render(){
         return (
             <div className="api-detail">
+                <div><Link to="/config">配置接口</Link></div>
                 {
                     this.state.data.map(function(item){  
-                        return <div><a>风向接口v1</a></div>;
+                        return <div key={item}><Link to={`/main/1`}>风向接口v1</Link></div>;
                     }  
                 )}
             </div>   
