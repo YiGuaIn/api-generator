@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import routes from '../route/config';
+import { ApiByList } from '../utils/api.conf';
 
 class ApiDetail extends Component {
     constructor(props){
         super(props);
         this.state = {
+            pid: this.props.match.params.id,
+            sidebarList: [],
             data: [1,2,3,4,5],
             apiData: {
                 title: '/add',
@@ -41,7 +44,20 @@ class ApiDetail extends Component {
         this.props.history.push('/api');
     }
     componentWillMount(){
-
+        let that = this;
+        let param = {pid: that.state.pid};
+        fetch(ApiByList, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(param)
+        }).then(function(response){
+            return response.json();
+        }).then(function(data){
+            that.setState({sidebarList: data});
+        });
     }
     render(){
         return (
@@ -54,10 +70,11 @@ class ApiDetail extends Component {
                     <div className="api-content">
                         <nav className="sidebar">
                             <ul>
-                                <li>增加用户</li>
-                                <li>删除用户</li>
-                                <li>更新用户</li>
-                                <li>查询用户</li>
+                                {
+                                    this.state.sidebarList.map((item) => {
+                                        return <li key={item.id}>{item.name}</li>
+                                    })
+                                }
                             </ul>
                         </nav>
                         <section className="detail-content">
