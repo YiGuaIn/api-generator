@@ -67,8 +67,12 @@ class ApiDetail extends Component {
         this.setState({requestParam: list})
     }
     delReqParam(index){
-        let list = this.state.responseParam;
-        list.splice(index, 1);
+        let list = this.state.requestParam;
+        if(list.length == 1){
+            list.splice(0, 1);
+        }else{
+            list.splice(index, 1);
+        }
         this.setState({requestParam: list});
     }
     reqField(e){
@@ -109,7 +113,11 @@ class ApiDetail extends Component {
     }
     delResParam(index){
         let reslist = this.state.responseParam;
-        reslist.splice(index, 1);
+        if(reslist.length == 1){
+            reslist.splice(0, 1);
+        }else{
+            reslist.splice(index, 1);
+        }
         this.setState({responseParam: reslist});
     }
     resField(e){

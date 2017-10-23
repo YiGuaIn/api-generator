@@ -72,7 +72,7 @@ class ApiDetail extends Component {
                             <ul>
                                 {
                                     this.state.sidebarList.map((item) => {
-                                        return <li key={item.id}>{item.name}</li>
+                                        return <li key={item.name}>{item.name}</li>
                                     })
                                 }
                             </ul>
