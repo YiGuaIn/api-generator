@@ -23,6 +23,7 @@ class ApiView extends Component {
         let user = this.state;
         if(user == null) return;
         if(user.username === 'admin' && user.password === '123456'){
+            // console.log(this.props);
             this.props.history.push('/api');
         }
     }

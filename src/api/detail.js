@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import routes from '../route/config';
 import { ApiByList } from '../utils/api.conf';
-
 class ApiDetail extends Component {
     constructor(props){
         super(props);
         this.state = {
-            pid: this.props.match.params.id,
+            // pid: this.props.match.params.id,
             sidebarList: [],
             data: [1,2,3,4,5],
             apiData: {
@@ -78,81 +77,24 @@ class ApiDetail extends Component {
                             </ul>
                         </nav>
                         <section className="detail-content">
-                            <header className="api-title">
-                                <h3>{this.state.apiData.title}</h3>
+                            <header className="config-title">
+                                <h3></h3>
+                                <div className="config-btns">
+                                    <Link to="/main/add">添加</Link>
+                                    <Link to="/main/add">删除</Link>
+                                    <Link to="/main/add">修改</Link>
+                                </div>
                             </header>
-                            <div className="doc-detail">
-                                <div className="api-item">
-                                    <span className="sub-title">接口描述</span>
-                                    <p className="sub-content">{this.state.apiData.descript}</p>
-                                </div>
-                                <div className="api-item">
-                                    <span className="sub-title">请求地址</span>
-                                    <p className="sub-content">{this.state.apiData.address}</p>
-                                </div>
-                                <div className="api-item">
-                                    <span className="sub-title">请求方法</span>
-                                    <p className="sub-content">{this.state.apiData.method}</p>
-                                </div>
-                                <div className="api-item">
-                                    <span className="sub-title">请求参数</span>
-                                    <table border="1">
-                                        <thead>
-                                            <tr>
-                                                <th>字段</th>
-                                                <th>描述</th>
-                                                <th>数据类型</th>
-                                                <th>备注</th>
-                                            </tr>     
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                this.state.apiData.requestParam.map((item) => {
-                                                    return <tr key={item.field}>
-                                                        <td>{item.field}</td>
-                                                        <td>{item.desc}</td>
-                                                        <td>{item.type}</td>
-                                                        <td>{item.remark}</td>
-                                                    </tr>;
-                                                })
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className="api-item">
-                                    <span className="sub-title">响应参数</span>
-                                    <table border="1">
-                                        <thead>
-                                            <tr>
-                                                <th>字段</th>
-                                                <th>描述</th>
-                                                <th>数据类型</th>
-                                                <th>备注</th>
-                                            </tr>     
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                this.state.apiData.requestParam.map((item) => {
-                                                    return <tr key={item.field}>
-                                                        <td>{item.field}</td>
-                                                        <td>{item.desc}</td>
-                                                        <td>{item.type}</td>
-                                                        <td>{item.remark}</td>
-                                                    </tr>;
-                                                })
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className="api-item">
-                                    <span className="sub-title">调试接口</span>
-                                </div>
-                            </div>
+                            {
+                                setTimeout(() => {
+                                    return <Route></Route>
+                                }, 500)
+                            }
                         </section>
                     </div>
                     <footer></footer>
                 </div> 
-            </Router>  
+            </Router> 
         );
     }
 }

@@ -151,10 +151,6 @@ class ApiDetail extends Component {
     render(){
         return (
             <div className="api-body">
-                <header className="api-header">
-                    <h3>配置接口</h3>
-                    <span onClick={this.goMain}>首页</span>
-                </header>
                 <div className="api-content">
                     <section className="detail-content">
                         <header className="config-title">
