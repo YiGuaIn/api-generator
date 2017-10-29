@@ -2,15 +2,12 @@ import ApiView from '../login/index';
 import ApiDoc from '../api';
 import ApiConfig from '../api/config';
 import ApiMain from '../api/detail';
-import ApiDetail from '../api/api_detail';
-import ApiAdd from '../api/add';
-import ApiDelete from '../api/delete';
-import ApiUpdate from '../api/update';
 const config = [
     {
         path: '/',
         exact: true,
-        component: ApiView
+        component: ApiView,
+        redirect: '/login'
     }, {
         path: '/login',
         exact: true,
@@ -27,25 +24,6 @@ const config = [
         path: '/main/:id',
         exact: false,
         component: ApiMain,
-        routes: [
-            {
-                path: '/main/detail/:id',
-                exact: false,
-                component: ApiDetail
-            }, {
-                path: '/main/add',
-                exact: false,
-                component: ApiAdd
-            }, {
-                path: '/main/delete',
-                exact: false,
-                component: ApiDelete
-            }, {
-                path: '/main/update',
-                exact: false,
-                component: ApiUpdate
-            }
-        ]
     }
 ];
 

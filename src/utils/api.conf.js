@@ -1,4 +1,4 @@
-const Service = "http://localhost:3008/api"
+const Service = "http://localhost:8021/api"
 
 export const CategoryByAdd = Service+'/addcg';
 export const CategoryByDelete = Service+'/deletecg';

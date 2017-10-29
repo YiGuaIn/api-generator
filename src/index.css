@@ -67,11 +67,6 @@ h3{
   border-radius: 4px;
   color: #eeeeee;
 }
-
-/* .login-contain::after {
-  
-} */
-
 .api-detail{
   /* display: flex;
   justify-content: center; */
@@ -122,9 +117,19 @@ h3{
   padding: 0 20px;
   line-height: 44px;
 }
-.api-content{
+.config-content{
+  position: relative;
   height: 100%;
+  width: 960px;
+  margin: 0 auto;
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+.api-content{
+  position: relative;
   display: flex;
+  height: 100%;
+  overflow-y: auto;
 }
 .sidebar ul{
   margin: 20px 0;
@@ -145,11 +150,20 @@ h3{
 .sidebar li:hover{
   background-color: #1ab29c
 }
+.detail{
+  flex: 1;
+  margin: 20px 20px 0;
+  padding-bottom: 40px;
+  overflow-y: auto;
+}
 .detail-content{
-  width: 100%;
-  padding: 10px 20px 60px;
-  max-height: 100%;
-  overflow: auto;
+  flex: 1;
+  margin: 20px 20px 40px;
+  border: 1px solid #1abc9c;
+  box-sizing: border-box;
+}
+.detail-content:last-of-type{
+  padding-bottom: 40px;
 }
 .api-title{
   padding: 20px 0;
@@ -185,13 +199,19 @@ th{
 td{
   padding: 5px 20px;
   text-align: center;
+  box-sizing: border-box;
 }
 .config-title{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0 10px;
-  border-bottom: 1px solid #1abc9c
+  padding: 10px;
+  border-bottom: 1px solid #1abc9c;
+  box-sizing: border-box;
+}
+.config-btns{
+  position: relative;
+  display: flex;
 }
 .config-btns button{
   outline: none;
@@ -200,17 +220,56 @@ td{
   background-color: #ffffff;
   border: 1px solid #1abc9c;
   border-radius: 2px;
-}
-.config-btns button+button{
   margin-left: 10px;
+}
+.config-btns ul{
+  position: absolute;
+  right: 0;
+  /* font-size: 12px; */
+  border: 1px solid #1abc9c;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: none;
+  transition: all 1s linear;
+  z-index: 1;
+}
+.config-btns ul li {
+  padding: 12px 30px;
+  border-bottom: 1px solid #1abc9c;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer
+}
+.config-btns ul li:last-of-type{
+  border-bottom: none;
+}
+.config-btns ul li:hover{
+  background-color: #eeeeee;
+}
+.confirm{
+  outline: none;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid #1abc9c;
+  border-radius: 2px;
+  margin-left: 20px;
+  height: 40px;
+  line-height: 1;
+  background-color: #1abc9c;
+  color: #ffffff;
+  cursor: pointer;
+  display: none;
 }
 .config-item {
   margin-top: 24px;
   display: flex;
   align-items: center;
 }
+.config-item:first-of-type{
+  margin-top: 0;
+}
 .config-item input{
-  height: 42px;
+  height: 40px;
   padding: 2px 10px;
   border-radius: 2px;
   outline: none;
@@ -240,16 +299,61 @@ ul{
   padding: 0;
   margin: 0;
 }
-.detail-content form {
-  padding: 0 20px;
-}
 .config-table{
+  width: 410px;
+  position: relative;
   margin-left:80px;
   margin-top: 10px;
   border-spacing: 0;
   border-collapse: collapse;
   border-color: #eeeeee;
 }
+.config-table tr, .config-table td{
+  max-height: 32px;
+}
 .config-table th, .config-table td{
   font-size: 12px;
+}
+.categorys-body{
+  position: relative;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.categorys-table{
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-color: #eeeeee;
+  margin-left: 30px;
+  font-size: 12px;
+}
+.categorys-table td span{
+  margin: 0 5px;
+}
+.apis-table{
+  position: absolute;
+  right: 20px;
+  background: #ffffff;
+}
+.categorys-table tr{
+  height: 40px;
+}
+.api-name{
+  display: flex;
+  align-items: center;
+}
+select{
+  width: 190px;
+  height: 40px;
+}
+.input-name {
+  height: 40px;
+  width: 220px;
+  border-radius: 4px;
+  padding: 8px;
+  outline: none;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  margin-left: 10px;
 }

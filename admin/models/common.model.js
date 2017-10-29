@@ -28,24 +28,19 @@ let apis = new Schema({
 });
 
 apis.statics.addApi = function(obj, cb){
-    return this.find(obj, function(err, data){
-        console.log(data);
+    return this.find({name: obj.name}, function(err, data){
         if(data && data.length > 0){
             return cb(err, {statuCode: 506, msg: '记录已存在...'})
         }
         return this.create(obj, cb);
     }.bind(this));
 }
-apis.static.delApi = function(obj, cb){
-    return this.findOneAndRemove({name: obj.name}, function(err, data){
-        if(data){
-            return cb(err, {statuCode: 200, msg: 'success'});
-        }
-        return cb(err, {statuCode: 505, msg: '找不到记录或删除失败...'});
-    });
+apis.statics.delApi = function(obj, cb){
+    console.log(54545);
+    return this.findOneAndRemove({_id: mongoose.Types.ObjectId(obj.id)}, cb);
 }
 apis.statics.updateApi = function(obj, cb){
-    return this.findOneAndUpdate({_id: obj.id}, {name: obj.name}, function(err, data){
+    return this.findOneAndUpdate({_id: mongoose.Types.ObjectId(obj.id)}, {name: obj.name}, function(err, data){
         if(data){
             return cb(err, {statuCode: 200, msg: 'success'});
         }
@@ -61,12 +56,11 @@ apis.static.queryApi = function(obj, cb){
     })
 }
 apis.statics.apiList = function(obj, cb){
-    return this.find({_id: mongoose.Types.ObjectId(obj.pid)}, cb);
+    return this.find({pid: mongoose.Types.ObjectId(obj.pid)}, cb);
 }
 
 apiCategory.statics.addApi = function(obj, cb){
     return this.find(obj, function(err, data){
-        console.log(data);
         if(data && data.length > 0){
             return cb(err, {statuCode: 506, msg: '记录已存在...'})
         }
@@ -84,7 +78,7 @@ apiCategory.statics.deleteApi = function(obj, cb){
 }
 
 apiCategory.statics.updateApi = function(obj, cb){
-    return this.findOneAndUpdate({_id: obj.id}, {name: obj.name}, function(err, data){
+    return this.findOneAndUpdate({_id: mongoose.Types.ObjectId(obj._id)}, {name: obj.name}, function(err, data){
         if(data){
             return cb(err, {statuCode: 200, msg: 'success'});
         }
