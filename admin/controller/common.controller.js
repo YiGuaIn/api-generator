@@ -63,7 +63,7 @@ exports.updateCategory = function(req, res, next){
     }
 }
 exports.queryCategory = function(req, res, next){
-    if(req.body.name == "" || req.body.name === 'undefined'){
+    if(req.body.pid == "" || req.body.pid === 'undefined'){
         res.status = 405;
         res.send({code: 405, errmsg: '参数不能为空...'});
         res.end();
@@ -72,9 +72,9 @@ exports.queryCategory = function(req, res, next){
         Category.queryApi(req.body, function(err, data){
             if(err){
                 res.status = 505;
-                resData = {code: 505, errmsg: '更新失败...'}
+                resData = {code: 505, errmsg: '找不到数据...'}
             }else{
-                res.status = 506;
+                res.status = 200;
                 resData = data
             }
             res.send(resData);
@@ -137,7 +137,7 @@ exports.delApi = function(req, res, next){
     }
 }
 exports.updateApi = function(req, res, next){
-    if(req.body.id == null || req.body.id === 'undefined' || req.body.id <= 0 || req.body.name == "" || req.body.name === 'undefined'){
+    if(req.body.pid == null || req.body.pid === 'undefined'){
         res.status = 405;
         res.send({code: 405, errmsg: '参数不能为空...'});
         res.end();
@@ -148,8 +148,8 @@ exports.updateApi = function(req, res, next){
                 res.status = 505;
                 resData = {code: 505, errmsg: '更新失败...'}
             }else{
-                res.status = 506;
-                resData = {code: 506, data: data}
+                res.status = 200;
+                resData = {code: 200, data: data}
             }
             res.send(resData);
             res.end();

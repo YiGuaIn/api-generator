@@ -40,12 +40,7 @@ apis.statics.delApi = function(obj, cb){
     return this.findOneAndRemove({_id: mongoose.Types.ObjectId(obj.id)}, cb);
 }
 apis.statics.updateApi = function(obj, cb){
-    return this.findOneAndUpdate({_id: mongoose.Types.ObjectId(obj.id)}, {name: obj.name}, function(err, data){
-        if(data){
-            return cb(err, {statuCode: 200, msg: 'success'});
-        }
-        return cb(err, {statuCode: 505, msg: '找不到记录或更新失败...'});
-    })
+    return this.findOneAndUpdate({_id: mongoose.Types.ObjectId(obj._id)}, obj, cb);
 }
 apis.static.queryApi = function(obj, cb){
     return this.findOne({name: obj.name}, function(err, data){
@@ -87,12 +82,7 @@ apiCategory.statics.updateApi = function(obj, cb){
 }
 
 apiCategory.statics.queryApi = function(obj, cb){
-    return this.findOne({name: obj.name}, function(err, data){
-        if(data){
-            return cb(err, {statuCode: 200, msg: 'success', data: data});
-        }
-        return cb(err, {statuCode: 505, msg: '找不到记录...'});
-    })
+    return this.findOne({_id:  mongoose.Types.ObjectId(obj.pid)}, cb)
 }
 
 apiCategory.statics.apiList = function(obj, cb){

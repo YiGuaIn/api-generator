@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { ApiByList } from '../utils/api.conf';
+import { ApiByList, CategoryByFindOne } from '../utils/api.conf';
 
 class Detail extends Component {
     constructor(props){
         super(props);
         this.state = {
             pid: this.props.match.params.id,
+            title: '',
             sidebarList: [],
             currentApi: {
                 name: '',
@@ -39,7 +40,6 @@ class Detail extends Component {
         }).then(function(response){
             return response.json();
         }).then(function(data){
-            console.log(data);
             if(data.code !== 200)
             {
                 alert(data.code);
@@ -55,12 +55,25 @@ class Detail extends Component {
             }
             that.setState({sidebarList: data.data, currentApi: data.data[0]});
         });
+        fetch(CategoryByFindOne, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(param)
+        }).then(function(response){
+            return response.json();
+        }).then(function(data){
+            if(typeof(data) === 'undefined') return;
+            that.setState({title: data.name});
+        });
     }
     render(){
         return (
             <div className="api-body">
                 <header className="api-header">
-                    <h3>风向接口api-v1</h3>
+                    <h3>{this.state.title}</h3>
                     <span onClick={this.goMain}>首页</span>
                 </header>
                 <div className="api-content">
@@ -139,9 +152,6 @@ class Detail extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <div className="api-item">
-                                <span className="sub-title">调试接口</span>
-                            </div>
                         </div>
                     </div>
                     </section>
@@ -152,3 +162,6 @@ class Detail extends Component {
     }
 }
 export default Detail;
+// <div className="api-item">
+// <span className="sub-title">调试接口</span>
+// </div>

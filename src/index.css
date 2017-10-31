@@ -212,6 +212,7 @@ td{
 .config-btns{
   position: relative;
   display: flex;
+  margin-right: 10px;
 }
 .config-btns button{
   outline: none;
@@ -283,6 +284,7 @@ td{
   padding: 5px 10px;
   border-radius: 2px;
   cursor: pointer;
+  background-color: #FFFFFF;
 }
 .param-input{
   width: 80px;
@@ -330,6 +332,10 @@ ul{
 }
 .categorys-table td span{
   margin: 0 5px;
+  cursor: pointer;
+}
+.categorys-table td span:hover{
+  color: #1abc9c;
 }
 .apis-table{
   position: absolute;
